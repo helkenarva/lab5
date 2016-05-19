@@ -1,4 +1,4 @@
 #ifndef qwrt_h
 #define qwrt_h
-void qwrt(double a, double b, double c);
+int qwrt(double a, double b, double c, double *d, double *x1, double *x2);
 #endif

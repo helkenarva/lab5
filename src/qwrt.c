@@ -1,24 +1,24 @@
 #include <stdio.h>
 #include <math.h>
 
-void qwrt(double a, double b, double c)
-{
-	double d;
-	double x1, x2;
-	d = b * b - 4 * a * c;
-	if (d < 0)
+int qwrt(double a, double b, double c, double *d, double *x1, double *x2)
+{	
+	if (a == 0)
+		return -1;
+
+	*d = b * b - 4 * a * c;
+
+	if (*d < 0)
+		return 0;
+	else if (*d == 0)
 	{
-		printf("\nNo roots\n");
+		*x1 = -b / (2 * a);
+		return 1;
 	}
-	else if (d == 0)
+	else if (*d > 0)
 	{
-		x1 = -b / (2 * a);
-		printf("\nRoot: %lf\n", x1);
-	}
-	else if (d > 0)
-	{
-		x1 = (-b + sqrt(d)) / (2 * a);
-		x2 = (-b - sqrt(d)) / (2 * a);
-		printf("\nRoots: %lf %lf\n", x1, x2);
+		*x1 = (-b + sqrt(*d)) / (2 * a);
+		*x2 = (-b - sqrt(*d)) / (2 * a);
+		return 2;
 	}
 }
